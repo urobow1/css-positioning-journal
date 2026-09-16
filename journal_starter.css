@@ -1,0 +1,231 @@
+/* 
+   HENRY'S JOURNAL - CSS POSITIONING EXERCISE
+
+   Author: Usra Robow
+   Date: 02/02/2026
+
+   Special Features:
+   #2 Hover Effects & Transitions
+   #3 Extra Responsive Breakpoint
+ */
+
+/* 
+   STEP 1: SETUP & BOX MODEL RESET
+ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+#main-container {
+    width: 960px;
+    margin: 20px auto;
+    background: white;
+}
+
+/*
+   STEP 2: STYLE HEADER & BASIC ELEMENTS
+*/
+
+#header-box {
+    background-color: #4a90e2;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+#header-box h1 {
+    font-size: 2rem;
+}
+
+#header-box:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+}
+
+.tagline {
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* 
+   STEP 3: CREATE TWO-COLUMN FLOAT LAYOUT
+ */
+
+#sidebar {
+    float: left;
+    width: 25%;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+#content-area {
+    float: left;
+    width: 75%;
+    padding: 20px;
+}
+
+.sidebar-content h2 {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #4a90e2;
+}
+
+.friends-list {
+    list-style: none;
+}
+
+.friends-list li {
+    padding: 10px 5px;
+    border-bottom: 1px solid #cccccc;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+.friends-list li:hover {
+    padding-left: 15px;
+    background-color: #4a90e2;
+    color: white;
+}
+
+/* 
+   STEP 4: FIX PARENT COLLAPSE WITH CLEARFIX
+ */
+
+#main-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* 
+   STEP 5: STYLE JOURNAL ENTRIES & IMAGES
+ */
+
+.journal-entry {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.journal-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.entry-image {
+    float: left;
+    margin-right: 15px;
+    border: 12px solid #ffffff;
+    box-shadow: 0 0 2px #333333;
+    padding: 8px;
+    background: white;
+    max-width: 220px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.entry-image:hover {
+    transform: scale(1.04);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.entry-title {
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.entry-date {
+    color: #888888;
+    font-size: 0.9em;
+}
+
+.entry-content {
+    line-height: 1.6;
+}
+
+.entry-content p {
+    margin-bottom: 10px;
+}
+
+/* 
+   FOOTER
+ */
+
+#footer {
+    clear: both;
+    padding: 15px;
+    background-color: #4a90e2;
+    color: white;
+    text-align: center;
+}
+
+/* 
+   SPECIAL FEATURE #3:
+   EXTRA RESPONSIVE TABLET BREAKPOINT
+ */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    #main-container {
+        width: 90%;
+    }
+
+    #sidebar {
+        width: 30%;
+    }
+
+    #content-area {
+        width: 70%;
+    }
+
+    .entry-image {
+        max-width: 180px;
+    }
+}
+
+/* 
+   STEP 6: REQUIRED RESPONSIVE MEDIA QUERY
+ */
+
+@media (max-width: 768px) {
+    #main-container {
+        width: 100%;
+        margin: 0;
+    }
+
+    #sidebar,
+    #content-area {
+        float: none;
+        width: 100%;
+    }
+
+    #sidebar {
+        margin-bottom: 20px;
+    }
+
+    .entry-image {
+        float: none;
+        display: block;
+        max-width: 100%;
+        margin: 0 auto 15px;
+    }
+}
